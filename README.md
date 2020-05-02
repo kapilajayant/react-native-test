@@ -4,3 +4,4 @@
 ## Learnings:-
 
 * Environment Setup
+* Running on device
