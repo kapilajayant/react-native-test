@@ -16,6 +16,7 @@ import {
   StatusBar,
   Button,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -47,9 +48,14 @@ class App extends React.Component{
             <StatusBar backgroundColor={'skyblue'}/>
             <Text style={styles.textStyle}>{this.state.name}</Text>
             <Text style={styles.textStyle}>{this.state.status}</Text>
-            <Button style={styles.buttonStyle} textStyle={styles.textStyle} color='orange' title = "Show last name"
+            <Button style={styles.buttonStyle} title="last name"
             onPress = {this.handleState.bind(this, this.state.name+" Kapila")}>
             </Button>
+            <TouchableOpacity 
+            style={styles.touchableStyle} 
+            onPress = {()=>{Alert.alert("Goddamn!")}}>
+              <Text>Damn it</Text>
+            </TouchableOpacity>
             
           </View>
   );
@@ -60,9 +66,16 @@ class App extends React.Component{
 const styles = StyleSheet.create({
 
   buttonStyle:{
-    flex:1,
-    alignItems:"center",
-    justifyContent:"center"
+
+    backgroundColor:'black'
+
+  },
+
+  touchableStyle:{
+    marginTop:20,
+    backgroundColor:'orange',
+    padding:10,
+    
   },
 
   container:{
