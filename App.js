@@ -44,7 +44,7 @@ class App extends React.Component{
   render(){
   return (
           <View style={styles.container}>
-            
+            <StatusBar backgroundColor={'skyblue'}/>
             <Text style={styles.textStyle}>{this.state.name}</Text>
             <Text style={styles.textStyle}>{this.state.status}</Text>
             <Button style={styles.buttonStyle} textStyle={styles.textStyle} color='orange' title = "Show last name"
