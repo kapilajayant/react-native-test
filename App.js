@@ -14,6 +14,8 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
+  Alert,
 } from 'react-native';
 
 import {
@@ -24,67 +26,58 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+class App extends React.Component{
+  
+  state = {
+    name:"Jayant",
+    status: "Learning"
+  }
+
+  handleState(name){
+    this.setState(
+      {
+        name:name
+      }
+    )
+  }
+
+  render(){
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          {/* <Header /> */}
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Jayant Kapila yooo</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <Text style={styles.sectionTitle}>Jayant Kapila</Text>
+          <View style={styles.container}>
+            
+            <Text style={styles.textStyle}>{this.state.name}</Text>
+            <Text style={styles.textStyle}>{this.state.status}</Text>
+            <Button style={styles.buttonStyle} textStyle={styles.textStyle} color='orange' title = "Show last name"
+            onPress = {this.handleState.bind(this, this.state.name+" Kapila")}>
+            </Button>
+            
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
   );
-};
+  console.log("updated", this.state)
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+
+  buttonStyle:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:"center"
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+
+  container:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor:'skyblue'
   },
-  body: {
-    backgroundColor: Colors.lighter
+
+  textStyle: {
+    color:'white',
+    fontSize: 30,
+    marginBottom:10
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-    alignSelf : "center"
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+
 });
 
 export default App;
